@@ -24,7 +24,8 @@
   --shadow-lg: 0 24px 60px rgba(120, 94, 50, .16);
   --radius: 22px;
   --radius-sm: 15px;
-  --dots: rgba(120, 94, 50, .085);
+  --dots: rgba(120, 94, 50, .10);
+  --floor: #F2E5CD;
   --glass: rgba(251, 243, 228, .82);
   color-scheme: light;
 }
@@ -50,6 +51,7 @@
   --shadow: 0 12px 32px rgba(0, 0, 0, .38);
   --shadow-lg: 0 24px 60px rgba(0, 0, 0, .5);
   --dots: rgba(255, 255, 255, .07);
+  --floor: #1F1B15;
   --glass: rgba(27, 24, 19, .82);
   color-scheme: dark;
 }
@@ -255,7 +257,7 @@ main {
   position: relative;
   padding-top: 56px;
   padding-bottom: 2px;
-  background-color: var(--bg-soft);
+  background-color: var(--floor);
   background-image: radial-gradient(var(--dots) 1.1px, transparent 1.1px);
   background-size: 15px 15px;
   background-position: 0 0;
