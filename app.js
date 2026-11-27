@@ -298,7 +298,7 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
         </button>
       </div>
-      <p class="rd-desc">${esc(line)} 지금 ${esc((ROOMS[currentRoom] || {}).name || '')}에 있어요.</p>
+      <p class="rd-desc">${esc(line)} ${esc((ROOMS[currentRoom] || {}).name || '')}에 있어요.</p>
       ${running.length
         ? `<div class="rd-tasks">${running.map((t) => `
             <div class="rd-task">
