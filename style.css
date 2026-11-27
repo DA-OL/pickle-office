@@ -168,9 +168,9 @@ button { font: inherit; color: inherit; }
 .icon-btn:active { transform: scale(.94); }
 .icon-btn.is-busy svg { animation: spin .9s linear infinite; }
 
-.ico-moon { display: none; }
-[data-theme="dark"] .ico-sun { display: none; }
-[data-theme="dark"] .ico-moon { display: block; }
+.ico-sun { display: none; }
+[data-theme="dark"] .ico-sun { display: block; }
+[data-theme="dark"] .ico-moon { display: none; }
 
 /* ── 레이아웃 ─────────────────────────────── */
 
@@ -314,8 +314,8 @@ main {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: 6px;
+  justify-content: flex-start;
+  gap: 3px;
   min-width: 0;
   padding: 11px 12px 10px;
   text-align: left;
@@ -398,9 +398,10 @@ main {
   text-transform: uppercase;
   color: var(--ink-3);
   font-weight: 700;
-  margin-top: -4px;
+  margin-top: -1px;
 }
 .room-state {
+  margin-top: auto;
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -447,9 +448,9 @@ main {
 .character {
   position: absolute;
   left: 27%;
-  top: 30%;
-  width: 72px;
-  height: 72px;
+  top: 25%;
+  width: 68px;
+  height: 68px;
   margin: 0;
   transform: translate(-50%, -50%);
   transition: left .95s cubic-bezier(.45, .05, .55, .95),
@@ -462,7 +463,7 @@ main {
   padding: 0;
 }
 @media (min-width: 560px) {
-  .character { width: 82px; height: 82px; }
+  .character { width: 86px; height: 86px; }
 }
 .character:focus-visible { outline: none; }
 .character:focus-visible .tok {
@@ -976,6 +977,5 @@ main {
 @media (max-width: 380px) {
   .room-name { font-size: 12.5px; }
   .room-en { display: none; }
-  .character { width: 64px; height: 64px; }
-  .bubble p { max-width: 66vw; }
+  .character { width: 64px; height: 64px; }  .bubble p { max-width: 66vw; }
 }
