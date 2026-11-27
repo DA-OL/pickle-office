@@ -35,10 +35,10 @@
   };
 
   const ROOM_POS = {
-    meeting: { x: 25, y: 36 },
-    work: { x: 75, y: 36 },
-    archive: { x: 25, y: 84 },
-    lounge: { x: 75, y: 84 }
+    meeting: { x: 25, y: 38 },
+    work: { x: 75, y: 38 },
+    archive: { x: 25, y: 88 },
+    lounge: { x: 75, y: 88 }
   };
 
   const STATE = {

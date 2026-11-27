@@ -465,7 +465,7 @@ main {
 .character {
   position: absolute;
   left: 25%;
-  top: 36%;
+  top: 38%;
   width: 68px;
   height: 68px;
   margin: 0;
@@ -474,19 +474,10 @@ main {
               top .95s cubic-bezier(.45, .05, .55, .95);
   cursor: pointer;
   z-index: 5;
-  pointer-events: none;
   -webkit-tap-highlight-color: transparent;
   border: 0;
   background: none;
   padding: 0;
-}
-
-/* 노란 몸통(선)만 탭 대상으로 두어, 방 가운데를 눌러도 방이 열리게 합니다. */
-.tok,
-.tok-svg { pointer-events: none; }
-.tok-body {
-  pointer-events: visibleStroke;
-  cursor: pointer;
 }
 @media (min-width: 560px) {
   .character { width: 78px; height: 78px; }
