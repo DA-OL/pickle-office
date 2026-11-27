@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#FBF3E4" />
+<meta name="robots" content="noindex, nofollow" />
+<title>비서실 · 다올 &amp; 똑똑이</title>
+<meta name="description" content="다올님과 똑똑이만 쓰는 작은 비서실" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="style.css" />
+<script>
+  /* 첫 화면이 깜빡이지 않도록 테마를 먼저 정합니다. */
+  (function () {
+    try {
+      var saved = localStorage.getItem('pickle-office:theme:v1');
+      var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', saved || (dark ? 'dark' : 'light'));
+    } catch (e) { /* 저장소를 못 쓰면 기본 테마 */ }
+  })();
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 40 40">
+        <path d="M29 12H15.5C11.9 12 9 14.9 9 18.5V23c0 3.6 2.9 6.5 6.5 6.5H29"
+              fill="none" stroke="currentColor" stroke-width="6.5" stroke-linecap="round" />
+      </svg>
+    </span>
+    <div class="brand-text">
+      <h1>비서실</h1>
+      <p>다올 &amp; 똑똑이</p>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <div class="clock">
+      <span class="clock-time" id="clock-time">--:--</span>
+      <span class="clock-date" id="clock-date">···</span>
+    </div>
+    <button class="icon-btn" id="btn-theme" type="button" aria-label="화면 테마 바꾸기" title="테마 바꾸기">
+      <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.8v2.2M12 19v2.2M4.2 12H2M22 12h-2.2M6.5 6.5 5 5M19 19l-1.5-1.5M17.5 6.5 19 5M5 19l1.5-1.5"/></svg>
+      <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2z"/></svg>
+    </button>
+    <button class="icon-btn" id="btn-settings" type="button" aria-label="메모 보드 설정" title="설정">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 3.2v2.4M12 18.4v2.4M3.2 12h2.4M18.4 12h2.4M5.8 5.8l1.7 1.7M16.5 16.5l1.7 1.7M18.2 5.8l-1.7 1.7M7.5 16.5l-1.7 1.7"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <div class="col col-left">
+
+    <section class="card office-card" aria-labelledby="office-title">
+      <div class="card-head">
+        <div>
+          <h2 id="office-title">오피스</h2>
+          <p class="hint">방을 누르면 똑똑이가 그리로 가요</p>
+        </div>
+        <span class="pill pill-live" id="office-pill">똑똑이 · 대기</span>
+      </div>
+
+      <div class="office" id="office">
+        <div class="bubble" id="bubble" role="status" aria-live="polite">
+          <p id="bubble-text">안녕하세요, 다올님. 똑똑이예요.</p>
+          <span class="bubble-tail" aria-hidden="true"></span>
+        </div>
+
+        <div class="rooms" id="rooms">
+
+          <button class="room" type="button" data-room="meeting" style="--tint: rgba(143, 184, 234, .20)">
+            <span class="room-top">
+              <span class="room-ico">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.4" r="2.7"/><circle cx="16.6" cy="9.2" r="2.2"/><path d="M3.6 19.2c0-2.9 2.3-4.7 5.4-4.7s5.4 1.8 5.4 4.7"/><path d="M15.2 19.2c0-2.3 1.6-3.8 3.5-3.8 1.6 0 2.9 1 3.3 2.6"/></svg>
+              </span>
+              <span class="room-name">회의실</span>
+              <span class="room-badge" data-badge="meeting" hidden>0</span>
+            </span>
+            <span class="room-en">Meeting Room</span>
+            <span class="room-state" data-room-state="meeting"><i class="dot"></i><span>—</span></span>
+            <span class="here-tag" hidden>똑똑이</span>
+          </button>
+
+          <button class="room" type="button" data-room="work" style="--tint: rgba(255, 200, 61, .22)">
+            <span class="room-top">
+              <span class="room-ico">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="4.6" width="17.6" height="11.2" rx="2"/><path d="M9 20h6M12 15.8V20"/></svg>
+              </span>
+              <span class="room-name">작업실</span>
+              <span class="room-badge" data-badge="work" hidden>0</span>
+            </span>
+            <span class="room-en">Work Desk</span>
+            <span class="room-state" data-room-state="work"><i class="dot"></i><span>—</span></span>
+            <span class="here-tag" hidden>똑똑이</span>
+          </button>
+
+          <button class="room" type="button" data-room="archive" style="--tint: rgba(178, 166, 235, .20)">
+            <span class="room-top">
+              <span class="room-ico">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.2 5h4.2v14H4.2zM10.4 5h4.2v14h-4.2z"/><path d="m17.3 6 3.6 1-2.7 11.6-3.6-1z"/></svg>
+              </span>
+              <span class="room-name">자료실</span>
+              <span class="room-badge" data-badge="archive" hidden>0</span>
+            </span>
+            <span class="room-en">Archive</span>
+            <span class="room-state" data-room-state="archive"><i class="dot"></i><span>—</span></span>
+            <span class="here-tag" hidden>똑똑이</span>
+          </button>
+
+          <button class="room" type="button" data-room="lounge" style="--tint: rgba(127, 200, 169, .22)">
+            <span class="room-top">
+              <span class="room-ico">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.4 8.2h10.2v5.6a4 4 0 0 1-4 4H8.4a4 4 0 0 1-4-4z"/><path d="M14.6 9.4h2.2a2.4 2.4 0 0 1 0 4.8h-2.2"/><path d="M5.6 20.4h9.4"/></svg>
+              </span>
+              <span class="room-name">휴게실</span>
+              <span class="room-badge" data-badge="lounge" hidden>0</span>
+            </span>
+            <span class="room-en">Lounge</span>
+            <span class="room-state" data-room-state="lounge"><i class="dot"></i><span>—</span></span>
+            <span class="here-tag" hidden>똑똑이</span>
+          </button>
+
+          <div class="character" id="character" role="button" tabindex="0" aria-label="똑똑이 상태 보기">
+            <div class="tok">
+              <svg class="tok-svg" viewBox="0 0 96 96" aria-hidden="true">
+                <defs>
+                  <linearGradient id="tokGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#FFDF80" />
+                    <stop offset="100%" stop-color="#FFBB24" />
+                  </linearGradient>
+                </defs>
+                <g class="tok-body">
+                  <path d="M70 27H35c-6.6 0-12 5.4-12 12v18c0 6.6 5.4 12 12 12h35"
+                        fill="none" stroke="url(#tokGrad)" stroke-width="17"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                  <circle class="tok-eye" cx="43.5" cy="46" r="3.5" fill="#3E3218" />
+                  <circle class="tok-eye" cx="58.5" cy="46" r="3.5" fill="#3E3218" />
+                  <circle cx="37" cy="52.4" r="3" fill="#FF9BB0" opacity=".5" />
+                  <circle cx="65" cy="52.4" r="3" fill="#FF9BB0" opacity=".5" />
+                  <path class="tok-mouth" d="M46 54.6c2.7 2.6 6.6 2.6 9.3 0"
+                        fill="none" stroke="#3E3218" stroke-width="2.2" stroke-linecap="round" />
+                </g>
+              </svg>
+            </div>
+            <span class="tok-shadow" aria-hidden="true"></span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="room-detail" id="room-detail" hidden></div>
+    </section>
+
+  </div>
+
+  <div class="col col-right">
+
+    <section class="card status-card" aria-labelledby="status-title">
+      <div class="card-head">
+        <div>
+          <h2 id="status-title">업무 현황판</h2>
+          <p class="hint" id="status-updated">불러오는 중…</p>
+        </div>
+        <button class="icon-btn" id="btn-refresh" type="button" aria-label="현황 새로고침" title="새로고침">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20.4 3.6v4.6h-4.6"/></svg>
+        </button>
+      </div>
+      <div class="summary-row" id="summary-row"></div>
+      <ul class="task-list" id="task-list"></ul>
+    </section>
+
+    <section class="card memo-card" aria-labelledby="memo-title">
+      <div class="card-head">
+        <div>
+          <h2 id="memo-title">@똑똑이</h2>
+          <p class="hint">지시와 메모를 남겨 두는 보드</p>
+        </div>
+        <button class="pill pill-btn" id="memo-mode" type="button">이 기기에만 저장</button>
+      </div>
+      <div class="chat" id="chat" aria-live="polite"></div>
+      <form class="composer" id="composer" autocomplete="off">
+        <label class="sr-only" for="memo-input">메모 내용</label>
+        <textarea id="memo-input" rows="1" maxlength="500" placeholder="똑똑이에게 남길 말…"></textarea>
+        <button class="send-btn" type="submit" aria-label="메모 보내기">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12 20.5 4.5 13 21l-2.4-7.2z"/></svg>
+        </button>
+      </form>
+      <p class="memo-note">여기 적은 메모는 똑똑이와의 채팅으로 자동 전달되지 않아요. 급한 지시는 채팅으로 보내 주세요.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-foot">
+  <span>작은 비서실 · 다올 &amp; 똑똑이</span>
+</footer>
+
+<dialog id="settings-dialog" class="modal" aria-labelledby="settings-title">
+  <div class="modal-inner">
+    <div class="modal-head">
+      <h2 id="settings-title">메모 보드 설정</h2>
+      <button class="icon-btn" id="btn-close-settings" type="button" aria-label="닫기">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <p class="modal-desc">
+      Firebase Realtime Database 주소를 넣으면 폰과 PC에서 같은 메모를 볼 수 있어요.
+      비워 두면 이 브라우저에만 저장됩니다.
+    </p>
+    <label class="field">
+      <span class="field-label">Realtime Database URL</span>
+      <input id="db-url" type="url" inputmode="url" autocomplete="off" spellcheck="false"
+             placeholder="https://내프로젝트-default-rtdb.firebaseio.com" />
+    </label>
+    <p class="modal-hint">데이터는 <code>/office/messages</code> 아래에 저장됩니다.</p>
+    <p class="modal-warn">공개 저장소예요. 비밀번호·연락처 같은 민감한 내용은 적지 마세요.</p>
+    <div class="modal-status" id="db-status">현재: 이 브라우저에만 저장</div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="btn-clear-local" type="button">이 기기 메모 지우기</button>
+      <span class="spacer"></span>
+      <button class="btn btn-ghost" id="btn-db-disconnect" type="button">연결 해제</button>
+      <button class="btn btn-primary" id="btn-db-save" type="button">저장</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="app.js" defer></script>
+</body>
+</html>

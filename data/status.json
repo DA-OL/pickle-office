@@ -1,0 +1,64 @@
+{
+  "updatedAt": "2026-11-27T14:45:00+09:00",
+  "assistant": {
+    "name": "똑똑이",
+    "mood": "집중",
+    "line": "톡톡 감시 중이에요. 지금은 새 소식이 없어요."
+  },
+  "tasks": [
+    {
+      "id": "talktalk",
+      "label": "이시아약국 톡톡 30분 감시",
+      "room": "work",
+      "state": "running",
+      "schedule": "30분마다",
+      "lastRun": "14:30",
+      "note": "톡톡 감시 중이에요. 지금은 새 소식이 없어요."
+    },
+    {
+      "id": "blog-copy",
+      "label": "블로그 원고 매일 전달",
+      "room": "work",
+      "state": "running",
+      "schedule": "매일 오전",
+      "lastRun": "09:10",
+      "note": "오늘 원고를 전달했어요. 읽어 보실래요?"
+    },
+    {
+      "id": "gold-watch",
+      "label": "금값 저점 모니터링",
+      "room": "work",
+      "state": "running",
+      "schedule": "하루 4회",
+      "lastRun": "13:00",
+      "note": "금값 살펴보는 중이에요. 저점에 닿으면 알려 드릴게요."
+    },
+    {
+      "id": "library-event",
+      "label": "주말 도서관 행사 대기",
+      "room": "meeting",
+      "state": "waiting",
+      "schedule": "금요일 저녁",
+      "lastRun": "11-21",
+      "note": "도서관 행사를 기다리고 있어요. 열리면 알려 드릴게요."
+    },
+    {
+      "id": "morning-brief",
+      "label": "아침 브리핑 준비",
+      "room": "archive",
+      "state": "done",
+      "schedule": "매일 08:00",
+      "lastRun": "08:00",
+      "note": "오늘 브리핑은 아침에 다 전했어요."
+    },
+    {
+      "id": "mail-tidy",
+      "label": "메일함 정리",
+      "room": "archive",
+      "state": "idle",
+      "schedule": "하루 1회",
+      "lastRun": "07:40",
+      "note": "메일은 내일 아침에 다시 정리할게요."
+    }
+  ]
+}
